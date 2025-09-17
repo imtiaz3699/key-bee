@@ -1,0 +1,15 @@
+export const routes = {
+  DASHBOARD: "/dashboard",
+  MANAGE_OPERATORS: "/dashboard/manage-operators",
+  MANAGE_CREATORS: "/dashboard/manage-creators",
+  MANAGE_CREATORS_VIEW: "/dashboard/manage-creators-view",
+  MANAGE_ADMIN_USERS: "/dashboard/manage-admin-users",
+  MANAGE_ADMIN_USERS_EDIT: "/dashboard/manage-admin-users-edit",
+  MANAGE_ADMIN_USERS_ADD: "/dashboard/manage-admin-users-add",
+  MANAGE_ADMIN_USERS_VIEW: "/dashboard/manage-admin-users-view",
+  MANAGE_TASKS: "/dashboard/manage-tasks",
+  MANAGE_PROFILe: "/dashboard/manage-profile",
+  VIEW_OPERATOR: "/dashboard/view-operator",
+  VIEW_TASK: "/dashboard/view-task",
+  MANAGE_CREATORS_TASK_VIEW: "/dashboard/manage-creators-task-view",
+};
