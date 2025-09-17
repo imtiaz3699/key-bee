@@ -33,15 +33,23 @@ function Layout() {
       name: "Manage Creators",
       url: "/dashboard/manage-creators",
       icon: <UserPen />,
-      children: [routes.MANAGE_CREATORS_VIEW,routes.MANAGE_CREATORS_TASK_VIEW,routes.MANAGE_CREATORS_VIEW],
+      children: [
+        routes.MANAGE_CREATORS_VIEW,
+        routes.MANAGE_CREATORS_TASK_VIEW,
+        routes.MANAGE_CREATORS_VIEW,
+      ],
     },
     {
       name: "Manage Admin Users",
       url: "/dashboard/manage-admin-users",
-      icon: <UserCog />, 
-      children: [routes.MANAGE_ADMIN_USERS_EDIT,routes.MANAGE_ADMIN_USERS_ADD,routes.MANAGE_ADMIN_USERS_VIEW],
+      icon: <UserCog />,
+      children: [
+        routes.MANAGE_ADMIN_USERS_EDIT,
+        routes.MANAGE_ADMIN_USERS_ADD,
+        routes.MANAGE_ADMIN_USERS_VIEW,
+      ],
     },
-    
+
     {
       name: "Manage Profile",
       url: "/dashboard/manage-profile",
@@ -82,7 +90,7 @@ function Layout() {
                 to={element?.url}
                 className={`${
                   pathName === element?.url ||
-                  element?.children?.includes(pathName) 
+                  element?.children?.some((child) => pathName.startsWith(child))
                     ? "bg-[#FFC750]"
                     : ""
                 } hover:bg-[#FFC750] flex flex-row items-center p-[8px] gap-2 rounded-[8px] text-[14px] font-medium text-[#151515]`}

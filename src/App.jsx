@@ -71,7 +71,7 @@ function App() {
               />
               <Route path="manage-tasks" element={<ManageTasks />} />
               <Route path="manage-profile" element={<ManageProfile />} />
-              <Route path="view-task" element={<ViewTasks />} />
+              <Route path="view-task/:id" element={<ViewTasks />} />
             </Route>
           </Routes>
         </Router>

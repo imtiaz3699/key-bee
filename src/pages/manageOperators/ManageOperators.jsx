@@ -22,7 +22,6 @@ function ManageOperators() {
         }&page=${pagination?.page}&limit=${pagination?.limit}`
       );
       setData(res?.data);
-      // setPagination(res?.pagination);
       if (pagination?.totalPages !== res?.pagination?.totalPages) {
         setPagination((prev) => ({
           ...prev,
@@ -36,7 +35,6 @@ function ManageOperators() {
   useEffect(() => {
     fetchList();
   }, [filters, status, pagination]);
-  console.log(pagination, "faldjfaldsjhalsdjfkjd");
   return (
     <div className="flex flex-col gap-[16px] w-full overflow-auto">
       <h1 className="font-bold text-[14px] text-[#151515]">Manage Operators</h1>

@@ -1,10 +1,33 @@
 import { Rate, Table } from "antd";
 import { LocateIcon, MapPin, MoveLeft } from "lucide-react";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import api from "../../../utils/api";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { selectStatusColor } from "../../../utils/utils";
+
+dayjs.extend(relativeTime);
 function ViewTasks() {
+  const [task, setTask] = React.useState({});
+  const { id } = useParams();
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleReadMore = () => {
+    setIsExpanded(!isExpanded);
+  };
+  const fetchTasks = async () => {
+    try {
+      const res = await api.get(`api/admin/getsingletask/${id}`);
+      console.log(res, "fasldfaslfjhaljfhalsjfhalsjfhasljfhald");
+      setTask(res?.data);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   const navigate = useNavigate();
   const taskTypes = [
     "in_progress",
@@ -19,7 +42,8 @@ function ViewTasks() {
     {
       key: "1",
       title: "The admin has refunded the amount",
-      description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the Lorem Ipsum is simply....",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the Lorem Ipsum is simply....",
       date: "06/12/2025 - 05:06PM",
       amount: "$20",
     },
@@ -46,6 +70,11 @@ function ViewTasks() {
       key: "date",
     },
   ];
+  useEffect(() => {
+    fetchTasks();
+  }, [id]);
+  console.log(task, "fasdflajdas123454513fads5f4sd387564857");
+  
   return (
     <div className="flex flex-col gap-[17px] ">
       <div className="flex flex-col sm:flex-row justify-between gap-5">
@@ -56,19 +85,24 @@ function ViewTasks() {
             className="cursor-pointer"
           />
           <p className="text-[14px] font-bold leading-[20px]">
-            Task In-Progress
+            Task{" "}
+            {task?.task_Status?.charAt(0)?.toUpperCase() +
+              task?.task_Status?.slice(1)}
           </p>
         </div>
         <div className="flex flex-row items-center gap-2">
           <p className="text-[#4C4C4C] font-medium text-[18px]">Status:</p>
           <div className="flex flex-row items-center ">
             {" "}
-            <div className="w-[20px] h-[20px] rounded-full bg-blue-700"></div>{" "}
-            <p className="font-bold text-[18px]">In Progress</p>{" "}
+            <div className={`w-[20px] h-[20px] rounded-full ${selectStatusColor(task?.task_Status)}`}></div>{" "}
+            <p className="font-bold text-[18px]">
+              {task?.task_Status?.charAt(0)?.toUpperCase() +
+                task?.task_Status?.slice(1)}
+            </p>{" "}
           </div>
         </div>
       </div>
-      <div className="flex flex-col lg:flex-row  items-stretch gap-[40px] ">
+      <div className="flex flex-col lg:flex-row items-stretch gap-[40px] ">
         <div className="w-full lg:w-1/2 border-[1px] border-gray-100 px-[20px] py-[28px] rounded-[8px] flex flex-col gap-[15px] justify-between">
           <div className="flex flex-col gap-[20px] ">
             <div className="w-full flex flex-row items-center justify-between border-b-[1px] border-b-gray-100 pb-[20px]">
@@ -78,7 +112,9 @@ function ViewTasks() {
                 </div>
                 <div className="flex flex-col gap-1">
                   <p className="font-bold text-[#151515] text-[16px]">
-                    Chelsie Jhonson
+                    {task?.creator_id?.first_name +
+                      " " +
+                      task?.creator_id?.last_name}
                   </p>
                   <div className="flex flex-row  gap-2 ">
                     <p className="text-[#151515] text-[14.4px] font-bold">
@@ -88,9 +124,9 @@ function ViewTasks() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col  text-[#303030] text-[14px] font-normal">
-                <p>+233 20 234 5678</p>
-                <p>acbcd@gmail.com</p>
+              <div className="flex flex-col  text-[#303030] text-[14px] font-medium">
+                <p>{task?.creator_id?.phone_number}</p>
+                <p>{task?.creator_id?.email}</p>
               </div>
             </div>
 
@@ -98,29 +134,36 @@ function ViewTasks() {
               <div className="text-[24px] font-bold leading-[33.66px]">
                 Photo Walkthrough
                 <p className="text-[#1B323C99] text-[15px] font-normal">
-                  Posted 12 mins ago{" "}
+                  {`Posted ${dayjs(task?.createdAt).fromNow()}`}{" "}
                 </p>
               </div>
               <div className="flex flex-row items-center gap-1">
                 <MapPin />
                 <p className="font-bold text-[16px] text-[#595959]">
-                  123 Main St, Austin, TX
+                  {task?.location_Of_Property?.address}
                 </p>
               </div>
             </div>
             <div className="text-[16px]">
-              Budget: <span className="text-green-500 font-bold"> 200$</span>
+              Budget:{" "}
+              <span className="text-green-500 font-bold"> {task?.price}$</span>
             </div>
             <div className="flex flex-row items-center">
               <span className="text-[18px] font-normal">Due Date:</span>
               <span className="text-[#3B8EB2] font-bold text-[18px]">
-                | Aug 22, 2025 – 3:00 PM
+                | {task?.due_date ?? "--"}
               </span>
             </div>
             <p className="text-[20px] font-normal leading-[26.93px] text-gray-500">
-              Please provide a complete photo walkthrough of the property.
-              Capture wide-angle shots of every room, making sure each space is
-              clearly visible... <span className="text-blue-700">see more</span>
+              {isExpanded ? task?.desc : task?.desc?.slice(0, 100) + "... "}
+              {task?.desc?.length < 100 ? null : (
+                <span
+                  onClick={toggleReadMore}
+                  className="text-blue-700 cursor-pointer"
+                >
+                  {isExpanded ? "see less" : "see more"}
+                </span>
+              )}
             </p>
           </div>
 

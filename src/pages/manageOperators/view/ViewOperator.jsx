@@ -9,30 +9,43 @@ import dayjs from "dayjs";
 import DeleteModal from "../../../components/Modal/DeleteModal";
 import toast from "react-hot-toast";
 import { routes } from "../../../utils/routes";
-import ManageOperatorTables from "../../../components/tables/ManageOperatorTables";
+import OperatorTaskTable from "../../../components/tables/OperatorTaskTable";
 function ViewOperator() {
   const [isChecked, setIsChecked] = React.useState(false);
   const [operator, setOperator] = React.useState(null);
   const [isDelete, setIsDelete] = React.useState(false);
-  const [tasks,setTasks] = React.useState();
+  const [tasks, setTasks] = React.useState();
+  const [pagination, setPagination] = React.useState({
+    limit: 10,
+    page: 1,
+    totalPages: 0,
+    total: 0,
+  });
   const navigate = useNavigate();
   const { id } = useParams();
 
   const fetchOperator = async () => {
     try {
-      const res = await api.get(`api/admin/viewSingleOperator/${id}`);
+      const res = await api.get(
+        `api/admin/viewSingleOperator/${id}?page=${pagination?.page}?limit=${pagination?.limit}`
+      );
       if (res?.statusCode === 200) {
         setOperator(res?.data?.operator);
         setIsChecked(res?.data?.operator?.isAvailable);
-        setTasks(res?.data?.tasks)
+        setTasks(res?.data?.tasks);
+        if (pagination?.totalPages !== res?.data?.pagination?.totalPages) {
+          setPagination((prev) => ({
+            ...prev,
+            totalPages: res?.data?.pagination?.totalPages,
+          }));
+        }
+        console.log(res, "fasdlfjahsldfjahsldfjahsdlfkjdk");
       }
     } catch (e) {
       console.log(e);
     }
   };
-  useEffect(() => {
-    fetchOperator();
-  }, []);
+
   const handleDeleteOperator = async () => {
     try {
       const res = await api.delete(`api/admin/deleteOperator/${id}`);
@@ -52,20 +65,24 @@ function ViewOperator() {
     };
     try {
       const res = await api.patch(`api/admin/enableDisable/${id}`, payload);
-      if(res?.statusCode === 200) {
-        setIsChecked(res?.data?.isAvailable)
+      if (res?.statusCode === 200) {
+        setIsChecked(res?.data?.isAvailable);
       }
     } catch (e) {
       console.log(e);
     }
   };
+  console.log(tasks, "fasldfjhasldkfjhalsdjfhsdkj");
+  useEffect(() => {
+    fetchOperator();
+  }, [pagination?.page]);
   return (
     <div className="flex flex-col gap-[16px] ">
       <div className="flex flex-row items-center gap-2 font-bold text-[#151515] text-[14px]">
         <MoveLeft />
         Operator Information
       </div>
-      <div className="w-full  flex items-center justify-between  ">
+      <div className="w-full  flex items-center justify-between">
         <div className="flex items-center justify-between max-w-[1109px] w-full rounded-[10px] border-[1px] border-gray-300 py-[20px] pr-[20px]">
           <div className="w-[307px] flex flex-col items-center justify-center gap-[8px]">
             <div className="w-[100px] h-[100px] rounded-full bg-red-500"></div>
@@ -157,8 +174,11 @@ function ViewOperator() {
           </div>
         </div>
       </div>
-
-      <ManageOperatorTables data = {tasks} />
+      <OperatorTaskTable
+        tasks={tasks}
+        pagination={pagination}
+        setPagination={setPagination}
+      />
       <DeleteModal
         title="Delete!"
         content="Are you sure you want to delete this operator? This action cannot be undone."

@@ -1,13 +1,11 @@
-import { Table, Pagination, Dropdown, Menu, Switch, Tooltip } from "antd";
+import { Dropdown, Menu, Table, Tooltip } from "antd";
 import React from "react";
+import { selectStatusColor } from "../../utils/utils";
+import { Eye, Star, Trash2 } from "lucide-react";
 import { EllipsisOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { routes } from "../../utils/routes";
-import { CircleCheck, CircleX, Eye, Trash2 } from "lucide-react";
-import { ExclamationOutlined } from "@ant-design/icons";
-import { Star } from "lucide-react";
-import { selectStatusColor } from "../../utils/utils";
-function TasksTables({ url, tasks, pagination, setPagination }) {
+function OperatorTaskTable({ tasks, pagination, setPagination, url }) {
   const data = tasks?.map((element, idx) => ({
     key: element?._id,
     task_title: element?.title,
@@ -17,11 +15,6 @@ function TasksTables({ url, tasks, pagination, setPagination }) {
     task_status: element?.task_Status,
     rating: 0,
   }));
-
-  const onChange = (checked) => {
-    console.log(`switch to ${checked}`);
-  };
-
   const menu = (
     <Menu style={{ width: "170px" }} className="!text-[#6F767E]">
       <Menu.Item key="1">
@@ -43,7 +36,6 @@ function TasksTables({ url, tasks, pagination, setPagination }) {
       </Menu.Item>
     </Menu>
   );
-
   const columns = [
     {
       title: "Task Title",
@@ -51,18 +43,13 @@ function TasksTables({ url, tasks, pagination, setPagination }) {
       key: "task_title",
     },
     {
-      title: "Task Description",
-      dataIndex: "task_description",
-      key: "task_description",
+      title: "Due Date - Time",
+      dataIndex: "due_date_time",
+      key: "due_date_time",
+      render: (text) => <div className=" ">{text ?? "--"}</div>,
     },
     {
-      title: <div className="text-center">Task ID</div>,
-      dataIndex: "task_id",
-      key: "task_id",
-      render: (text) => <div className=" font-bold text-center">{text}</div>,
-    },
-    {
-      title: <div className="text-center">Task Price</div>,
+      title: <div className="text-center">Task Budget</div>,
       dataIndex: "task_price",
       key: "task_price",
       render: (text) => (
@@ -73,7 +60,6 @@ function TasksTables({ url, tasks, pagination, setPagination }) {
       title: <div className="text-center">Task Status</div>,
       dataIndex: "task_status",
       key: "task_status",
-
       render: (_, record) => {
         const statusType = selectStatusColor(record?.task_status);
         record?.task_status === "cancelled" ? "bg-red-500" : "";
@@ -112,34 +98,11 @@ function TasksTables({ url, tasks, pagination, setPagination }) {
     {
       title: "Action",
       key: "action",
-      render: (_, record) => {
-        const menu = (
-          <Menu style={{ width: "170px" }} className="!text-[#6F767E]">
-            <Menu.Item key="1">
-              {" "}
-              <Link
-                to={url ? url : `${routes.VIEW_TASK}/${record?.key}`}
-                path={url ? url : `${routes.VIEW_TASK}/${record?.key}`}
-                className="flex items-center gap-2"
-              >
-                <Eye className="h-[16px] w-[16px]" color="#6F767E" />{" "}
-                <span className="!text-[#6F767E]"> View Details</span>
-              </Link>{" "}
-            </Menu.Item>
-            <Menu.Item key="5">
-              <div className="flex items-center gap-2">
-                <Trash2 className="h-[16px] w-[16px]" color="#6F767E" />
-                <span className="!text-[#6F767E]">Delete</span>{" "}
-              </div>{" "}
-            </Menu.Item>
-          </Menu>
-        );
-        return (
-          <Dropdown overlay={menu} trigger={["click"]}>
-            <EllipsisOutlined style={{ fontSize: "20px", cursor: "pointer" }} />
-          </Dropdown>
-        );
-      },
+      render: () => (
+        <Dropdown overlay={menu} trigger={["click"]}>
+          <EllipsisOutlined style={{ fontSize: "20px", cursor: "pointer" }} />
+        </Dropdown>
+      ),
     },
   ];
   const handleTableChange = (paginationConfig) => {
@@ -177,4 +140,4 @@ function TasksTables({ url, tasks, pagination, setPagination }) {
   );
 }
 
-export default TasksTables;
+export default OperatorTaskTable;
