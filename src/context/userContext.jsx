@@ -30,6 +30,8 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     setUser(null);
   };
+  console.log(user,token,'fadslfjahdslfkjahsdlfjkhasldjfkhasldkjfhksdj'
+  )
   return (
     <AuthContext.Provider value={{ user, token, setUser, setToken, login, logout }}>
       {children}

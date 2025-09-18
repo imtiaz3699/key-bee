@@ -6,326 +6,19 @@ import { CircleCheck, Trash2 } from "lucide-react";
 import { CircleX } from "lucide-react";
 import { Link } from "react-router-dom";
 import { routes } from "../../utils/routes";
-function ManageCreatorTables() {
-      const data = [
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "1",
-      name: "Chelsie Johnson",
-      email: "chelsiekeybee@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "2",
-      name: "Jaiden Nixon",
-      email: "jaiden.n@gmail.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    {
-      key: "3",
-      name: "Ace Foley",
-      email: "ace.fo@yahoo.com",
-      phone: "+1 44 2569 5869 696",
-      datetime: "06/12/2025 - 05:06PM",
-      license: "PDF File",
-    },
-    // add more rows here
-  ];
+import dayjs from "dayjs";
+function ManageCreatorTables({ data, pagination, setPagination }) {
+  const datas = data?.map((element, idx) => ({
+    key: element?._id,
+    name: element?.first_name + element?.last_name,
+    email: element?.email,
+    phone: element?.phone_number,
+    datetime: element?.created_at,
+    license: element?.subscriptions ?? [],
+  }));
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
-
   const menu = (
     <Menu style={{ width: "170px" }} className="!text-[#6F767E]">
       <Menu.Item key="1">
@@ -338,18 +31,6 @@ function ManageCreatorTables() {
           <Eye className="h-[16px] w-[16px]" color="#6F767E" />{" "}
           <span className="!text-[#6F767E]"> View Details</span>
         </Link>{" "}
-      </Menu.Item>
-      <Menu.Item key="2">
-        <div className="flex items-center gap-2">
-          <CircleCheck className="h-[16px] w-[16px]" color="#6F767E" />
-          <span className="!text-[#6F767E]">Approve</span>{" "}
-        </div>{" "}
-      </Menu.Item>
-      <Menu.Item key="3">
-        <div className="flex items-center gap-2">
-          <CircleX className="h-[16px] w-[16px]" color="#6F767E" />
-          <span className="!text-[#6F767E]">Reject</span>{" "}
-        </div>{" "}
       </Menu.Item>
       <Menu.Item key="4">
         <div className="flex items-center gap-2">
@@ -370,40 +51,56 @@ function ManageCreatorTables() {
       </Menu.Item>
     </Menu>
   );
-
   const columns = [
     {
       title: "Full Name",
       dataIndex: "name",
       key: "name",
-      // responsive: ["xs", "sm", "md", "lg", "xl"],
+       
     },
     {
       title: "E-Mail",
       dataIndex: "email",
       key: "email",
-      // responsive: ["xs", "sm", "md", "lg", "xl"],
+       
     },
     {
       title: "Phone Number",
       dataIndex: "phone",
       key: "phone",
-      // responsive: ["xs", "sm", "md", "lg", "xl"],
+       
     },
     {
-      title: "Date & Time",
+      title: "Joining Date",
       dataIndex: "datetime",
       key: "datetime",
-      // responsive: ["xs", "sm", "md", "lg", "xl"],
+      render:(_,record) => {
+        return (
+          <div>{dayjs(record?.datetime).format('DD/MM/YYYY')}</div>
+        )
+      }
+       
     },
     {
-      title: "Agent License",
+      title: "Membership",
       dataIndex: "license",
       key: "license",
-      // responsive: ["xs", "sm", "md", "lg", "xl"],
-      render: (text) => (
-        <div className=" hover:underline underline">{text}</div>
-      ),
+       
+      render: (_, record) => {
+        return (
+          <div className="hover:underline underline cursor-pointer flex flex-row gap-2">
+            {record?.license?.map((element, idx) => {
+
+              return (
+                <div className = {`${element?.type === 'premium' ? "text-green-500" : "text-blue-500"}`}>
+                  {element?.type ? element?.type?.charAt(0)?.toUpperCase() +
+                    element?.type?.slice(1) : "No subscription"}
+                </div>
+              );
+            })}
+          </div>
+        );
+      },
     },
     {
       title: "Action",
@@ -413,20 +110,32 @@ function ManageCreatorTables() {
           <EllipsisOutlined style={{ fontSize: "20px", cursor: "pointer" }} />
         </Dropdown>
       ),
-      // responsive: ["xs", "sm", "md", "lg", "xl"],
+       
     },
   ];
+  const handleTableChange = (paginationConfig) => {
+    setPagination((prev) => ({
+      ...prev,
+      page: paginationConfig.current,
+      limit: paginationConfig.pageSize,
+    }));
+  };
   return (
     <div style={{ overflowX: "auto" }} className="overflow-x-auto">
       {/* <div className = ""> */}
       <Table
         columns={columns.map((col) => ({ ...col, width: 150 }))}
-        dataSource={data}
+        dataSource={datas}
         pagination={{
-          pageSize: 10,
+          pageSize: pagination?.limit,
+          current: pagination?.page,
+          total: pagination?.totalPages * pagination?.limit,
           position: ["bottomLeft"],
           showSizeChanger: true,
           pageSizeOptions: ["10", "20", "50"],
+        }}
+        onChange={(paginationConfig) => {
+          handleTableChange(paginationConfig);
         }}
         rowClassName={(_, index) =>
           index % 2 === 0 ? "bg-gray-50" : "bg-white"
@@ -437,8 +146,9 @@ function ManageCreatorTables() {
         style={{ boxShadow: "0px 1px 3px rgba(0, 0, 0, 0.1)" }}
       />
       {/* </div> */}
+      <div className="icon-atom"> </div>
     </div>
-  )
+  );
 }
 
-export default ManageCreatorTables
+export default ManageCreatorTables;

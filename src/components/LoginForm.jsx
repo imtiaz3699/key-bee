@@ -10,7 +10,7 @@ import { routes } from "../utils/routes";
 function LoginForm({ messageApi }) {
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const { user, token } = useAuth();
+  const { user, token, setUser, setToken } = useAuth();
   if (token) {
     return <Navigate to={routes.DASHBOARD} replace />;
   }
@@ -25,6 +25,8 @@ function LoginForm({ messageApi }) {
           type: "success",
           content: "Login Successful",
         });
+        setToken(res?.data?.token);
+        setUser(res?.data?.admin);
         Cookies.set("user", JSON.stringify(res?.data?.admin), { expires: 7 });
         Cookies.set("token", res?.data?.token, { expires: 7 });
         navigate(routes.DASHBOARD);
