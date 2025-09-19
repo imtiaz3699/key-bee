@@ -18,11 +18,11 @@ import ManageAdminUserEdit from "./pages/adminUsers/edit/ManageAdminUserEdit";
 import ManageAdminUserAdd from "./pages/adminUsers/add/ManageAdminUserAdd";
 import ManageAdminUserView from "./pages/adminUsers/view/ManageAdminUserView";
 import ManageCreatorsView from "./pages/manageCreators/view/ManageCreatorsView";
-import SingleTaskView from "./pages/manageCreators/view/SingleTaskView";
 import { message } from "antd";
 import { AuthProvider } from "./context/userContext";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import { Toaster } from "react-hot-toast";
+import CreatorTaskView from "./pages/manageCreators/view/CreatorTaskView";
 function App() {
   const [count, setCount] = useState(0);
   const [messageApi, contextHolder] = message.useMessage();
@@ -49,12 +49,12 @@ function App() {
               <Route path="view-operator/:id" element={<ViewOperator />} />
               <Route path="manage-creators" element={<ManageCreators />} />
               <Route
-                path="manage-creators-view"
+                path="manage-creators-view/:id"
                 element={<ManageCreatorsView />}
               />
               <Route
-                path="manage-creators-task-view"
-                element={<SingleTaskView />}
+                path="manage-creators-task-view/:id"
+                element={<CreatorTaskView />}
               />
               <Route path="manage-admin-users" element={<ManageAdminUsers />} />
               <Route

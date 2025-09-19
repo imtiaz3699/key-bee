@@ -4,7 +4,7 @@ function SwitchOne({ checked, onChange }) {
   return (
     <>
       <label className="switch">
-        <input type="checkbox" defaultChecked onChange={onChange} />
+        <input type="checkbox" checked={checked} onChange={onChange} />
         <div className="slider">
           <div className="circle relative">
             {/* {checked ? (

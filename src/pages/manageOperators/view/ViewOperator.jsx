@@ -84,6 +84,8 @@ function ViewOperator() {
       </div>
       <div className="w-full  flex items-center justify-between">
         <div className="flex items-center justify-between max-w-[1109px] w-full rounded-[10px] border-[1px] border-gray-300 py-[20px] pr-[20px]">
+          
+          
           <div className="w-[307px] flex flex-col items-center justify-center gap-[8px]">
             <div className="w-[100px] h-[100px] rounded-full bg-red-500"></div>
             <p className="font-bold text-[20px] leading-[24px]">
@@ -120,7 +122,7 @@ function ViewOperator() {
                 {dayjs(operator?.created_at).format("DD-MM-YYYY HH:mm A")}
               </p>
             </div>
-            <div className="flex flex-row items-center  gap-[14px]">
+            <div className="flex flex-row items-center gap-[14px]">
               <button
                 onClick={() => setIsDelete(true)}
                 className="cursor-pointer w-[73px] h-[27px] bg-[#F03000] text-[14px] leading-[19px] text-white rounded-[100px]"
@@ -137,7 +139,7 @@ function ViewOperator() {
           <div className="flex flex-col gap-[20px]">
             <div className="flex flex-col gap-[16.11px]">
               <p className="font-bold text-[24px] ">
-                4.9/ <span className="text-[16px] font-normal"> 5.0</span>
+                4.9/ <span className="text-[16px] font-normal">5.0</span>
               </p>
               <Rate allowHalf defaultValue={2.5} />
               <p>05 Ratings</p>

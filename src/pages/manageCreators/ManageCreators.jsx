@@ -46,6 +46,7 @@ function ManageCreators() {
           data={data}
           pagination={pagination}
           setPagination={setPagination}
+          refetch={fetchCreator}
         />
       </div>
     </div>

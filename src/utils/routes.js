@@ -12,4 +12,5 @@ export const routes = {
   VIEW_OPERATOR: "/dashboard/view-operator",
   VIEW_TASK: "/dashboard/view-task",
   MANAGE_CREATORS_TASK_VIEW: "/dashboard/manage-creators-task-view",
+  CREATOR_TASK_VIEW:"/dashboard/manage-creators-task-view"
 };
